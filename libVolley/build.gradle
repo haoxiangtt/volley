@@ -1,0 +1,61 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+
+    }
+    buildTypes {
+
+        debug {
+            debuggable true
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        release {
+            debuggable false
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    useLibrary 'org.apache.http.legacy'
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+}
+
+def BASENAME = "volley";
+def sdkDestinationPath = "build/outputs/jar/";
+android.libraryVariants.all { variant ->
+    def finalName = "${BASENAME}-${variant.name}-v${variant.mergedFlavor.versionName}"
+    def deleteBuild = tasks.create(name : "delete${variant.name.capitalize()}Jar",
+            type : Delete) {
+        delete "${sdkDestinationPath}${finalName}.jar"
+    }
+    tasks.create(name : "makeJar${variant.name.capitalize()}",
+            dependsOn : [deleteBuild, variant.assemble],
+            type : Jar) {
+//        def zfile = file("build/intermediates/bundles/${variant.name}/classes.jar")
+//        from zipTree(zfile)
+        from "build/intermediates/classes/${variant.name}"
+        baseName finalName
+        destinationDir file(sdkDestinationPath)
+        exclude "android/support/**/*.class"
+        exclude "**/R.class"
+        exclude "**/R\$*.class"
+        include "cn/richinfo/**/*.class"
+    }
+}
