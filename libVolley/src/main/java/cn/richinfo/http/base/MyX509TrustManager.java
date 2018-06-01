@@ -4,14 +4,14 @@ import javax.net.ssl.X509TrustManager;
 
 /**
  * <pre>
- * @copyright  : Copyright ©2004-2018 版权所有　XXXXXXXXXXXXXXXXX
- * @company    : XXXXXXXXXXXXXXXXX
+ * copyright  : Copyright ©2004-2018 版权所有　XXXXXXXXXXXXXXXXX
+ * company    : XXXXXXXXXXXXXXXXX
  * @author     : OuyangJinfu
- * @e-mail     : jinfu123.-@163.com
- * @createDate : 2017/4/13 0023
- * @modifyDate : 2017/4/13 0023
+ * e-mail     : jinfu123.-@163.com
+ * createDate : 2017/4/13 0023
+ * modifyDate : 2017/4/13 0023
  * @version    : 1.0
- * @desc       :
+ * desc       :
  * </pre>
  */
 public class MyX509TrustManager implements X509TrustManager {

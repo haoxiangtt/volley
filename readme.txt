@@ -5,6 +5,27 @@ volley框架改进版
 3、修复部分bug；
 4、删减部分扩展类和辅助类，精简框架。
 
+引入方式：在build.gradle中加入以下：
+    android {
+        ......
+        useLibrary 'org.apache.http.legacy'
+    }
+
+    dependencies {
+        ......
+        compile 'com.bfy:volley:1.0.4'
+    }
+
+
+混淆规则：
+    -keep class org.apache.http.**
+    -keep class cn.richinfo.volley.Request {*;}
+    -keep class cn.richinfo.volley.RequestQueue {*;}
+    -keep class cn.richinfo.volley.toolbox.HttpStack {*;}
+    -keep class cn.richinfo.volley.toolbox.Volley {*;}
+    -keep class * extends cn.richinfo.volley.Request {*;}
+    -keep class cn.richinfo.http.** {*;}
+
 简单用法：
     RequestManager类为主要接口类，里面提供了init()、post()、get()多种重构方法，其中init()为
 初始化方法。

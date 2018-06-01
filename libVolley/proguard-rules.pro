@@ -117,13 +117,12 @@
 -dontwarn android.os.**
 
 
-
+-keep class org.apache.http.**
 -keep class cn.richinfo.volley.Request {*;}
 -keep class cn.richinfo.volley.RequestQueue {*;}
 -keep class cn.richinfo.volley.toolbox.HttpStack {*;}
 -keep class cn.richinfo.volley.toolbox.Volley {*;}
 
 -keep class * extends cn.richinfo.volley.Request {*;}
--keep class cn.richinfo.http.base.** {*;}
--keep class cn.richinfo.http.RequestManager {*;}
+-keep class cn.richinfo.http.** {*;}
 

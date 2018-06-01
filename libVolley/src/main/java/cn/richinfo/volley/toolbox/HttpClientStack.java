@@ -45,7 +45,7 @@ import cn.richinfo.volley.Request;
 import cn.richinfo.volley.Request.Method;
 
 /**
- * An HttpStack that performs request over an {@link HttpClient}.
+ * An HttpStack that performs request over an {org.apache.http.client.HttpClient}.
  */
 public class HttpClientStack implements HttpStack {
     protected final HttpClient mClient;

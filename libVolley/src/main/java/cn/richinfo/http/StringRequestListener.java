@@ -5,14 +5,14 @@ import java.util.Map;
 
 /**
  * <pre>
- * @copyright  : Copyright ©2004-2018 版权所有　彩讯科技股份有限公司
- * @company    : 彩讯科技股份有限公司
+ * copyright  : Copyright ©2004-2018 版权所有　彩讯科技股份有限公司
+ * company    : 彩讯科技股份有限公司
  * @author     : OuyangJinfu
- * @e-mail     : ouyangjinfu@richinfo.cn
- * @createDate : 2017/11/15 0015
- * @modifyDate : 2017/11/15 0015
+ * e-mail     : ouyangjinfu@richinfo.cn
+ * createDate : 2017/11/15 0015
+ * modifyDate : 2017/11/15 0015
  * @version    : 1.0
- * @desc       :
+ * desc       :
  * </pre>
  */
 

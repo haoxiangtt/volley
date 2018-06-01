@@ -50,8 +50,8 @@ import java.util.Map.Entry;
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLSocketFactory;
 
-import cn.richinfo.BuildConfig;
 import cn.richinfo.volley.AuthFailureError;
+import cn.richinfo.volley.BuildConfig;
 import cn.richinfo.volley.Request;
 import cn.richinfo.volley.Request.Method;
 import cn.richinfo.volley.VolleyLog;

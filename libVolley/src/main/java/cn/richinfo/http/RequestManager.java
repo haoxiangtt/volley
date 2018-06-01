@@ -6,15 +6,16 @@ import java.util.Map;
 
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.X509TrustManager;
 
-import cn.richinfo.BuildConfig;
 import cn.richinfo.http.base.LoadControler;
 import cn.richinfo.http.base.LoadListener;
 import cn.richinfo.http.base.MyHostnameVerifier;
 import cn.richinfo.http.base.MyX509TrustManager;
 import cn.richinfo.http.base.RequestMap;
 import cn.richinfo.volley.AuthFailureError;
+import cn.richinfo.volley.BuildConfig;
 import cn.richinfo.volley.DefaultRetryPolicy;
 import cn.richinfo.volley.Request;
 import cn.richinfo.volley.Request.Method;
@@ -27,14 +28,14 @@ import cn.richinfo.volley.toolbox.Volley;
 
 /**
  * <pre>
- * @copyright  : Copyright ©2004-2018 版权所有　XXXXXXXXXXXXXXXXX
- * @company    : XXXXXXXXXXXXXXXXX
+ * copyright  : Copyright ©2004-2018 版权所有　XXXXXXXXXXXXXXXXX
+ * company    : XXXXXXXXXXXXXXXXX
  * @author     : OuyangJinfu
- * @e-mail     : jinfu123.-@163.com
- * @createDate : 2017/4/13 0023
- * @modifyDate : 2017/4/13 0023
+ * e-mail     : jinfu123.-@163.com
+ * createDate : 2017/4/13 0023
+ * modifyDate : 2017/4/13 0023
  * @version    : 1.0
- * @desc       :
+ * desc       :
  * </pre>
  */
 public class RequestManager {
@@ -106,13 +107,7 @@ public class RequestManager {
 	}
 	
 	public void init(Context context) {
-		if (mRequestQueue != null) {
-			mRequestQueue.stop();
-		}
-		HttpsURLConnection.setDefaultHostnameVerifier(new MyHostnameVerifier());
-		HttpStack stack = new HurlStack(null, null, context.getApplicationContext());
-		this.mRequestQueue = Volley.newRequestQueue(context.getApplicationContext(), stack);
-		VolleyLog.DEBUG = BuildConfig.DEBUG;
+		init(context, null, null);
 	}
 
 	public void init(RequestQueue queue/*,ImageLoader imageLoader*/) {
@@ -120,6 +115,17 @@ public class RequestManager {
 			mRequestQueue.stop();
 		}
 		this.mRequestQueue = queue;
+		VolleyLog.DEBUG = BuildConfig.DEBUG;
+	}
+
+	public void init(Context context, HurlStack.UrlRewriter rewriter, SSLSocketFactory sslSocketFactory) {
+		if (mRequestQueue != null) {
+			mRequestQueue.stop();
+		}
+		HttpsURLConnection.setDefaultHostnameVerifier(new MyHostnameVerifier());
+		HttpStack stack = new HurlStack(rewriter, sslSocketFactory, context.getApplicationContext());
+		this.mRequestQueue = Volley.newRequestQueue(context.getApplicationContext(), stack);
+		VolleyLog.DEBUG = BuildConfig.DEBUG;
 	}
 
 	public static RequestManager getInstance() {
@@ -176,7 +182,7 @@ public class RequestManager {
 	 * 
 	 * @param url
 	 * @param data
-	 *            String, Map<String, String> or RequestMap(with file)
+	 *            String, Map or RequestMap(with file)
 	 * @param requestListener
 	 * @param actionId
 	 * @return
@@ -202,7 +208,7 @@ public class RequestManager {
 	/**
 	 * 
 	 * @param url
-	 * @param data String, Map<String, String> or RequestMap(with file)
+	 * @param data String, Map or RequestMap(with file)
 	 * @param requestListener
 	 * @param shouldCache
 	 * @param timeoutCount

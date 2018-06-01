@@ -28,14 +28,14 @@ import cn.richinfo.volley.toolbox.HttpHeaderParser;
 
 /**
  * <pre>
- * @copyright  : Copyright ©2004-2018 版权所有　XXXXXXXXXXXXXXXXX
- * @company    : XXXXXXXXXXXXXXXXX
+ * copyright  : Copyright ©2004-2018 版权所有　XXXXXXXXXXXXXXXXX
+ * company    : XXXXXXXXXXXXXXXXX
  * @author     : OuyangJinfu
- * @e-mail     : jinfu123.-@163.com
- * @createDate : 2017/4/13 0023
- * @modifyDate : 2017/4/13 0023
+ * e-mail     : jinfu123.-@163.com
+ * createDate : 2017/4/13 0023
+ * modifyDate : 2017/4/13 0023
  * @version    : 1.0
- * @desc       : ByteArrayRequest override getBody() and getParams()
+ * desc       : ByteArrayRequest override getBody() and getParams()
  * </pre>
  */
 class ByteArrayRequest extends Request<NetworkResponse> {
@@ -88,10 +88,17 @@ class ByteArrayRequest extends Request<NetworkResponse> {
 			return httpEntity.getContentType().getValue();
 		}
 		if (mPostBody != null && mPostBody instanceof String) {
+
+			if (mPostBody.toString().matches
+				("([0-9a-zA-Z_%]+=[0-9a-zA-Z\\u4e00-\\u9fa5_%]*?&?)+")){
+				return "application/x-www-form-urlencoded; charset=" + getParamsEncoding();
+			}
+
 			try {
 				new JSONObject(mPostBody.toString());
 				return "application/json; charset=" + getParamsEncoding();
 			} catch (JSONException e) {}
+
 			ByteArrayInputStream bis = null;
 			try {
 				DocumentBuilder db = DocumentBuilderFactory.newInstance().newDocumentBuilder();

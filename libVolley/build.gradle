@@ -21,7 +21,7 @@ android {
 
         release {
             debuggable false
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -30,11 +30,12 @@ android {
         abortOnError false
     }
 
-    useLibrary 'org.apache.http.legacy'
+//    useLibrary 'org.apache.http.legacy'
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+//    compile fileTree(include: ['*.jar'], dir: 'libs')
+    provided files('libs/org.apache.http.legacy.jar')
 }
 
 def BASENAME = "volley";
@@ -59,3 +60,5 @@ android.libraryVariants.all { variant ->
         include "cn/richinfo/**/*.class"
     }
 }
+
+apply from: 'upload.gradle'
