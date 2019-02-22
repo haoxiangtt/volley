@@ -4,6 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.richinfo.volley.demo.activitys.MainActivity">
+    tools:context="com.bfy.volley.demo.activitys.MainActivity">
 
 </android.support.constraint.ConstraintLayout>
