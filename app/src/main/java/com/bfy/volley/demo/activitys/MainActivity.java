@@ -9,8 +9,8 @@ import com.bfy.volley.demo.R;
 import java.util.Map;
 import java.util.UUID;
 
-import cn.richinfo.http.RequestManager;
-import cn.richinfo.http.StringRequestListener;
+import cn.bfy.http.RequestManager;
+import cn.bfy.http.StringRequestListener;
 
 
 public class MainActivity extends AppCompatActivity {

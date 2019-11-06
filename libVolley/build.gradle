@@ -57,7 +57,7 @@ android.libraryVariants.all { variant ->
         exclude "android/support/**/*.class"
         exclude "**/R.class"
         exclude "**/R\$*.class"
-        include "cn/richinfo/**/*.class"
+        include "cn/bfy/**/*.class"
     }
 }
 

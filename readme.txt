@@ -19,12 +19,12 @@ volley框架改进版
 
 混淆规则：
     -keep class org.apache.http.**
-    -keep class cn.richinfo.volley.Request {*;}
-    -keep class cn.richinfo.volley.RequestQueue {*;}
-    -keep class cn.richinfo.volley.toolbox.HttpStack {*;}
-    -keep class cn.richinfo.volley.toolbox.Volley {*;}
-    -keep class * extends cn.richinfo.volley.Request {*;}
-    -keep class cn.richinfo.http.** {*;}
+    -keep class cn.bfy.volley.Request {*;}
+    -keep class cn.bfy.volley.RequestQueue {*;}
+    -keep class cn.bfy.volley.toolbox.HttpStack {*;}
+    -keep class cn.bfy.volley.toolbox.Volley {*;}
+    -keep class * extends cn.bfy.volley.Request {*;}
+    -keep class cn.bfy.http.** {*;}
 
 简单用法：
     RequestManager类为主要接口类，里面提供了init()、post()、get()多种重构方法，其中init()为

@@ -10,20 +10,20 @@ import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.X509TrustManager;
 
 import cn.bfy.http.base.LoadControler;
+import cn.bfy.http.base.LoadListener;
+import cn.bfy.http.base.MyHostnameVerifier;
 import cn.bfy.http.base.MyX509TrustManager;
+import cn.bfy.http.base.RequestMap;
 import cn.bfy.volley.AuthFailureError;
-import cn.bfy.volley.BuildConfig;
+import cn.bfy.volley.DefaultRetryPolicy;
 import cn.bfy.volley.Request;
 import cn.bfy.volley.RequestQueue;
 import cn.bfy.volley.RetryPolicy;
 import cn.bfy.volley.VolleyLog;
 import cn.bfy.volley.toolbox.HttpStack;
 import cn.bfy.volley.toolbox.HurlStack;
-import cn.bfy.http.base.LoadListener;
-import cn.bfy.http.base.MyHostnameVerifier;
-import cn.bfy.http.base.RequestMap;
-import cn.bfy.volley.DefaultRetryPolicy;
 import cn.bfy.volley.toolbox.Volley;
+import cn.bfy.volley.BuildConfig;
 
 /**
  * <pre>
